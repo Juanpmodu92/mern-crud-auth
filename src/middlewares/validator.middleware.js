@@ -3,66 +3,46 @@ export const validateSchema = (schema) => (req, res, next) => {
         schema.parse(req.body);
         next();
     } catch (error) {
-        let errors = error.errors;
+        let parsedErrors = error.errors;
 
-        if (!errors && typeof error.message === 'string') {
+        if (!parsedErrors && typeof error.message === "string") {
             try {
-                errors = JSON.parse(error.message);
+                parsedErrors = JSON.parse(error.message);
             } catch {
-                errors = [];
+                parsedErrors = [];
             }
         }
 
-        if (Array.isArray(errors)) {
-            const mensajesPorCampo = {};
-
-            errors.forEach((err) => {
+        if (Array.isArray(parsedErrors)) {
+            const mensajes = parsedErrors.map((err) => {
                 const campo = err.path[0];
-                if (!mensajesPorCampo[campo]) {
-                    switch (campo) {
-                        // Campos de usuario
-                        case 'username':
-                            mensajesPorCampo[campo] = err.message || 'Username is required';
-                            break;
-                        case 'email':
-                            if (err.code === 'invalid_format') {
-                                mensajesPorCampo[campo] = 'Email is not valid';
-                            } else {
-                                mensajesPorCampo[campo] = err.message || 'Email is required';
-                            }
-                            break;
-                        case 'password':
-                            mensajesPorCampo[campo] = err.message || 'Password is required';
-                            break;
-
-                        // Campos de tarea
-                        case 'title':
-                            mensajesPorCampo[campo] = 'Title is required' || err.message;
-                            break;
-                        case 'description':
-                            mensajesPorCampo[campo] = 'Description is required' || err.message;
-                            break;
-                        case 'date':
-                            if (err.code === 'invalid_string') {
-                                mensajesPorCampo[campo] = 'Date must be a valid ISO string';
-                            } else {
-                                mensajesPorCampo[campo] = err.message || 'Invalid date format';
-                            }
-                            break;
-
-                        default:
-                            mensajesPorCampo[campo] = 'Task ' + campo;
-                    }
+                switch (campo) {
+                    case "username":
+                        return err.message || "Username is required";
+                    case "email":
+                        return err.code === "invalid_format"
+                            ? "Email is not valid"
+                            : err.message || "Email is required";
+                    case "password":
+                        return err.message || "Password is required";
+                    case "title":
+                        return err.message || "Title is required";
+                    case "description":
+                        return err.message || "Description is required";
+                    case "date":
+                        return err.code === "invalid_string"
+                            ? "Date must be a valid ISO string"
+                            : err.message || "Invalid date format";
+                    default:
+                        return `Invalid field: ${campo}`;
                 }
             });
 
-            return res.status(400).json({
-                error: Object.values(mensajesPorCampo),
-            });
-        } else {
-            return res.status(400).json({
-                error: [error.message || 'Solicitud inválida'],
-            });
+            return res.status(400).json({ errors: mensajes });
         }
+
+        return res.status(400).json({
+            errors: [error.message || "Solicitud inválida"],
+        });
     }
 };
