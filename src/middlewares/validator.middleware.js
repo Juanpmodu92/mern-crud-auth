@@ -24,7 +24,8 @@ export const validateSchema = (schema) => (req, res, next) => {
                             ? "Email is not valid"
                             : err.message || "Email is required";
                     case "password":
-                        return err.message || "Password is required";
+                        return err.message || "Password is required",
+                        "Password must be at least 6 characters";
                     case "title":
                         return err.message || "Title is required";
                     case "description":
