@@ -66,29 +66,25 @@ export const useAuth = () => {
     }, [errors])
 
     useEffect(() =>{
-        async function  checkLogin () {
+        const checkLogin = async () => {
             const cookies = Cookies.get()
-
             if (!cookies.token) {
                 setIsAuthenticated(false)
                 setLoading(false);
-                return setUser(null)
+                return
             }
-                try {
-                    const res = await verifyTokenRequest(cookies.token);
-                    if (!res.data){
-                        setIsAuthenticated(false);
-                        setLoading(false);
-                        return;
-                    }
-                    setIsAuthenticated(true);
-                    setUser(res.data);
-                } catch (error) {
-                    setIsAuthenticated(false);
-                    setUser(null);
-                    setLoading(false);
-                }
+            try {
+                const res = await verifyTokenRequest(cookies.token);
+                console.log(res);
+                if (!res.data) return setIsAuthenticated(false);
+                setIsAuthenticated(true);
+                setUser(res.data);
+                setLoading(false);
+            } catch (error) {
+                setIsAuthenticated(false);
+                setLoading(false);
             }
+        };
         checkLogin();
     },[])
 
