@@ -62,7 +62,7 @@ function LoginPage() {
         <button type="submit" className="w-full bg-blue-600 hover:bg-white hover:text-blue-600 text-white px-4 py-2 rounded-md my-2">Login</button>
       </form>
       <p className="flex gap-x-2 justify-between">
-        Don't have an account? <Link to="/register" className="text-blue-500 hover:text-white font-bold">Sign up</Link>
+        Don't have an account? <Link to="/register" className="text-blue-600 hover:text-orange-500 font-bold">Sign up</Link>
       </p>
       </div>
     </div>

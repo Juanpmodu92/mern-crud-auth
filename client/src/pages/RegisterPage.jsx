@@ -80,7 +80,7 @@ function RegisterPage() {
             </button>
         </form>
         <p className="flex gap-x-2 justify-between">
-        Already have an account? <Link to="/Login" className="text-blue-500 hover:text-white font-bold">Login</Link>
+        Already have an account? <Link to="/Login" className="text-blue-600 hover:text-green-600 font-bold">Login</Link>
         </p>
         </div>
         </div>

@@ -56,6 +56,13 @@ export const useAuth = () => {
         }
     }
 
+
+    const logout = () => {
+        Cookies.remove("token");
+        setIsAuthenticated(false)
+        setUser(null);
+    }
+
     useEffect(()=>{
         if (errors.length > 0){
             const timer = setTimeout(()=> {
@@ -93,6 +100,7 @@ export const useAuth = () => {
         value={{
             signup,
             signin,
+            logout,
             loading,
             user,
             isAuthenticated,
