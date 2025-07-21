@@ -2,7 +2,7 @@ import { Router } from "express";
 import { 
     register, 
     login, 
-    logout, 
+    logout,
     verifyToken
 } from "../controllers/auth.controller.js";
 import { authRequired } from "../middlewares/validateToken.js";
@@ -16,6 +16,8 @@ router.post("/login", validateSchema(loginSchema), login);
 
 router.post("/logout", logout);
 
-router.get("/profile", authRequired, verifyToken);
+router.get("/verify",  verifyToken);
+
+router.get("/profile", authRequired);
 
 export default router;   

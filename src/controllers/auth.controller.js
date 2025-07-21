@@ -67,15 +67,14 @@ export const login = async (req, res) => {
         });
 
         res.cookie("token", token, {
-            httpOnly: process.env.NODE_ENV !== "development",
-            secure: true,
-            sameSite: "none",
         });
 
         res.json({
             id: userFound._id,
             username: userFound.username,
             email: userFound.email,
+            createdAt: userFound.createdAt,
+            updatedAt: userFound.updatedAt,
         });
     } catch (error) {
         return res.status(500).json({ message: error.message });
