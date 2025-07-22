@@ -23,7 +23,7 @@ function RegisterPage() {
 
     return (
         <div className="flex h-[calc(100vh-100px)] items-center justify-center"> 
-        <div className="border-2 border-zinc-600 max-w-md p-10 rounded-md">
+        <div className="border-2 border-zinc-400 max-w-md p-10 rounded-md">
         <h1 className="text-2xl font-bold text-center mb-6 text-white animate-fade-in hover:text-blue-600"> Welcome! Sign up to get started </h1>
         {RegisterErrors?.length > 0 && (
             <div className="mb-4">
@@ -39,7 +39,7 @@ function RegisterPage() {
             <input
             type="text"
             {...register("username", { required: true })}
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2 hover:bg-white hover:text-black"
+            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2 hover:bg-white hover:text-black border border-gray-300"
             placeholder="Username"
             />
             {errors.username && (
@@ -51,7 +51,7 @@ function RegisterPage() {
             <input
             type="email"
             {...register("email", { required: true })}
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-400 hover:bg-white hover:text-black"
+            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-400 hover:bg-white hover:text-black border border-gray-300"
             placeholder="Email"
             />
             {errors.email && (
@@ -63,7 +63,7 @@ function RegisterPage() {
             <input
             type="password"
             {...register("password", { required: true })}
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2 hover:bg-white hover:text-black"
+            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2 hover:bg-white hover:text-black border border-gray-300"
             placeholder="Password"
             />
             {errors.password && (

@@ -11,6 +11,8 @@ import HomePage from './pages/HomePage';
 import ProtectedRoute from './ProtectedRoute';
 import { TaskProvider } from './context/TasksContext';
 import Navbar from './components/Navbar'
+import Footer from './components/Footer';
+
 
 
 function App() {
@@ -18,21 +20,26 @@ function App() {
     <AuthProvider>
       <TaskProvider>
         <BrowserRouter>
-          <Navbar/>
-          <main className='container mx-auto px-1 m-5'>
+          <div className="min-h-screen flex flex-col">
+            <Navbar />
+
+            <main className="flex-grow container mx-auto px-1 m-5">
               <Routes>
-                <Route path="/" element={<HomePage/>} />
+                <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
 
-                <Route element={<ProtectedRoute/>} >
-                  <Route path="/tasks" element={<TasksPage/>} />
-                  <Route path="/add-tasks" element={<TasksFormPage/>} />
-                  <Route path="/tasks/:id" element={<TasksFormPage/>} />
-                  <Route path="/profile" element={<ProfilePage/>} />
+                <Route element={<ProtectedRoute />}>
+                  <Route path="/tasks" element={<TasksPage />} />
+                  <Route path="/add-tasks" element={<TasksFormPage />} />
+                  <Route path="/tasks/:id" element={<TasksFormPage />} />
+                  <Route path="/profile" element={<ProfilePage />} />
                 </Route>
               </Routes>
-          </main>
+            </main>
+
+            <Footer />
+          </div>
         </BrowserRouter>
       </TaskProvider>
     </AuthProvider>
