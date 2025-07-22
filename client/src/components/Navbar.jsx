@@ -17,7 +17,10 @@ function Navbar() {
                         <li className="hover:text-blue-600   transition-colors font-bold">
                             <h1>Welcome {user.username}</h1>
                         </li>
-                        <li className="hover:text-indigo-400 transition-colors bg-blue-600 px-4 py-1 rounded-sm hover:bg-white">
+                        <li className="hover:text-white transition-colors bg-blue-600 px-4 py-1 rounded-sm hover:bg-green-600">
+                            <Link to="/tasks">Tasks</Link>
+                        </li>
+                        <li className="hover:text-black transition-colors bg-blue-600 px-4 py-1 rounded-sm hover:bg-orange-500">
                             <Link to="/add-tasks">Add Tasks</Link>
                         </li>
                         <li className="bg-blue-600 hover:bg-red-600 px-4 py-1 rounded-sm text-white hover:text-black transition-colors">
