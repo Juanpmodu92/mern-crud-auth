@@ -14,7 +14,7 @@ function Navbar() {
             <ul className="flex gap-6 text-sm font-medium">
                 {isAuthenticated ? (
                     <>
-                        <li className="hover:text-blue-600   transition-colors">
+                        <li className="hover:text-blue-600   transition-colors font-bold">
                             <h1>Welcome {user.username}</h1>
                         </li>
                         <li className="hover:text-indigo-400 transition-colors bg-blue-600 px-4 py-1 rounded-sm hover:bg-white">
