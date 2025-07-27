@@ -15,13 +15,16 @@ function Navbar() {
                 {isAuthenticated ? (
                     <>
                         <li className="hover:text-blue-600  text-2xl transition-colors font-bold">
-                            <h1>Welcome {user.username}</h1>
+                            <h1>¡Welcome {user.username}!</h1>
                         </li>
                         <li className="hover:text-white transition-colors bg-blue-600 px-4 py-1 rounded-md hover:bg-green-600">
                             <Link to="/tasks">Tasks</Link>
                         </li>
-                        <li className="hover:text-black transition-colors bg-blue-600 px-4 py-1 rounded-md hover:bg-orange-500">
-                            <Link to="/add-tasks">Add Tasks</Link>
+                        <li className="hover:text-white transition-colors bg-blue-600 px-4 py-1 rounded-md hover:bg-orange-500">
+                            <Link to="/add-tasks">Add New Tasks</Link>
+                        </li>
+                        <li className="hover:text-white transition-colors bg-blue-600 px-4 py-1 rounded-md hover:bg-purple-600">
+                            <Link to="/map">Ubication</Link>
                         </li>
                         <li className="bg-blue-600 hover:bg-red-600 px-4 py-1 rounded-md text-white hover:text-black transition-colors">
                             <Link to="/" onClick={() => {logout()}}>Logout</Link>
